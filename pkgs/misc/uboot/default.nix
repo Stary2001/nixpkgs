@@ -523,13 +523,6 @@ in {
     filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" ];
   };
 
-  ubootNanoPiR2S = buildUBoot {
-    defconfig = "nanopi-r2s-rk3328_defconfig";
-    extraMeta.platforms = [ "aarch64-linux" ];
-    BL31="${armTrustedFirmwareRK3328}/bl31.elf";
-    filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" ];
-  };
-
   # A special build with much lower memory frequency (666 vs 1600 MT/s) which
   # makes ROCK64 V2 boards stable. This is necessary because the DDR3 routing
   # on that revision is marginal and not uncoditionally stable at the specified
@@ -605,5 +598,12 @@ in {
     extraMeta.platforms = ["aarch64-linux"];
     BL31 = "${armTrustedFirmwareRK3399}/bl31.elf";
     filesToInstall = [ "u-boot.itb" "idbloader.img"];
+  };
+
+  ubootNanoPiR2S = buildUBoot {
+    defconfig = "nanopi-r2s-rk3328_defconfig";
+    extraMeta.platforms = [ "aarch64-linux" ];
+    BL31="${armTrustedFirmwareRK3328}/bl31.elf";
+    filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" ];
   };
 }
