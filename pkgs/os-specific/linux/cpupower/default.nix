@@ -5,13 +5,14 @@
   kernel,
   pciutils,
   gettext,
+  which
 }:
 
 stdenv.mkDerivation {
   pname = "cpupower";
   inherit (kernel) version src patches;
 
-  nativeBuildInputs = [ gettext ];
+  nativeBuildInputs = [ gettext which ];
   buildInputs = [ pciutils ];
 
   postPatch = ''
