@@ -55,3 +55,7 @@ in
     ''
       touch libgcc/config/${stdenv.targetPlatform.parsed.cpu.family}/crt{i,n}.S
     ''
++ lib.optionalString (stdenv.targetPlatform.isPower && stdenv.targetPlatform.is32bit)
+''
+   sed -i 's/#ifndef __powerpc64__/#if false/g' libgcc/config/rs6000/*-c{i,n}.S
+''

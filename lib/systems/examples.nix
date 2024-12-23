@@ -21,6 +21,10 @@ rec {
     config = "powerpc64le-unknown-linux-musl";
   };
 
+  powerpc = {
+    config = "powerpc-unknown-linux-gnu";
+  };
+
   ppc64 = {
     config = "powerpc64-unknown-linux-gnuabielfv2";
   };
