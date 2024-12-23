@@ -128,6 +128,7 @@ in
         includes = [ "tests/tlstest.sh" ];
         hash = "sha256-XmmKTvP6+QaWxyGFCX6/gDfME9GqBWSx4X8RH8QbDXA=";
       })
+      ./fix-powerpc.patch
     ];
   };
 
@@ -140,6 +141,7 @@ in
         includes = [ "tests/tlstest.sh" ];
         hash = "sha256-XmmKTvP6+QaWxyGFCX6/gDfME9GqBWSx4X8RH8QbDXA=";
       })
+      ./fix-powerpc.patch
     ];
   };
 
@@ -154,6 +156,7 @@ in
         url = "https://github.com/libressl/portable/commit/e6c7de3f03c51fbdcf5ad88bf12fe9e128521f0d.patch";
         hash = "sha256-LJy3fjbnc9h5DG3/+8bLECwJeBpPxy3hU8sPuhovmcw=";
       })
+      ./fix-powerpc.patch
     ];
   };
 
@@ -168,11 +171,15 @@ in
         url = "https://github.com/libressl/portable/commit/e6c7de3f03c51fbdcf5ad88bf12fe9e128521f0d.patch";
         hash = "sha256-LJy3fjbnc9h5DG3/+8bLECwJeBpPxy3hU8sPuhovmcw=";
       })
+      ./fix-powerpc.patch
     ];
   };
 
   libressl_4_0 = generic {
     version = "4.0.0";
     hash = "sha256-TYQZVfCsw9/HHQ49018oOvRhIiNQ4mhD/qlzHAJGoeQ=";
+    patches = [
+      ./fix-powerpc.patch
+    ];
   };
 }

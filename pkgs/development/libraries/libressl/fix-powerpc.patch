@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 437570b..91d8326 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -393,7 +393,7 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "mips64")
+ 	set(HOST_MIPS64 true)
+ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "mips")
+ 	set(HOST_MIPS true)
+-elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "powerpc")
++elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "ppc")
+ 	set(HOST_POWERPC true)
+ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "ppc64")
+ 	set(HOST_POWERPC64 true)
