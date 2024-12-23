@@ -25,11 +25,9 @@ rec {
   powerpc = {
     linux-kernel = {
       name = "powerpc";
-
-      baseConfig = "defconfig";
-      # Build whatever possible as a module, if not stated in the extra config.
       autoModules = true;
-      target = "uImage";
+      target = "zImage";
+      DTB = true;
     };
   };
 
