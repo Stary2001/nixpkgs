@@ -22,6 +22,17 @@ rec {
     linux-kernel.autoModules = false;
   };
 
+  powerpc = {
+    linux-kernel = {
+      name = "powerpc";
+
+      baseConfig = "defconfig";
+      # Build whatever possible as a module, if not stated in the extra config.
+      autoModules = true;
+      target = "uImage";
+    };
+  };
+
   powernv = {
     linux-kernel = {
       name = "PowerNV";
@@ -606,6 +617,9 @@ rec {
 
     else if platform.parsed.cpu == lib.systems.parse.cpuTypes.powerpc64le then
       powernv
+
+    else if platform.parsed.cpu == lib.systems.parse.cpuTypes.powerpc then
+      powerpc
 
     else
       { };
