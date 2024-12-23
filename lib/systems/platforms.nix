@@ -29,7 +29,7 @@ rec {
       baseConfig = "mpc83xx_defconfig";
       # Build whatever possible as a module, if not stated in the extra config.
       autoModules = true;
-      target = "zImage";
+      target = "vmlinux";
 
       extraConfig = ''
         RC_CORE n
