@@ -30,6 +30,10 @@ rec {
       # Build whatever possible as a module, if not stated in the extra config.
       autoModules = true;
       target = "uImage";
+
+      extraConfig = ''
+        RC_CORE n
+      '';
     };
   };
 
