@@ -353,6 +353,7 @@ let
         rm -f $dev/lib/modules/${modDirVersion}/build/.[0-9]*.d
 
         # Keep some extra files on some arches (powerpc, aarch64)
+        mkdir -p $dev/lib/modules/${modDirVersion}/build/arch/powerpc/lib/
         for f in arch/powerpc/lib/crtsavres.o arch/arm64/kernel/ftrace-mod.o; do
           if [ -f "$buildRoot/$f" ]; then
             cp $buildRoot/$f $dev/lib/modules/${modDirVersion}/build/$f
