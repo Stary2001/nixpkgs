@@ -26,7 +26,7 @@ rec {
     linux-kernel = {
       name = "powerpc";
 
-      baseConfig = "defconfig";
+      baseConfig = "mpc83xx_defconfig";
       # Build whatever possible as a module, if not stated in the extra config.
       autoModules = true;
       target = "uImage";
