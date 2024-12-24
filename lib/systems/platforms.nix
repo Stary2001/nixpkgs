@@ -27,8 +27,8 @@ rec {
       name = "powerpc";
 
       baseConfig = "mpc83xx_defconfig";
-      # Build whatever possible as a module, if not stated in the extra config.
-      autoModules = true;
+
+      autoModules = false;
       target = "vmlinux";
 
       extraConfig = ''
