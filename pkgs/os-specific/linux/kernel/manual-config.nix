@@ -1,5 +1,5 @@
 { lib, stdenv, buildPackages, runCommand, nettools, bc, bison, flex, perl, rsync, gmp, libmpc, mpfr, openssl
-, cpio, elfutils, hexdump, zstd, python3Packages, zlib, pahole, kmod, ubootTools
+, cpio, elfutils, hexdump, zstd, python3, zlib, pahole, kmod, ubootTools
 , fetchpatch
 , rustc, rust-bindgen, rustPlatform
 }:
@@ -155,7 +155,7 @@ let
         mpfr
         elfutils
         zstd
-        (python3Packages.withPackages (ps: [ ps.libfdt ]))
+        (python3.pythonOnBuildForHost.withPackages (ps: [ ps.libfdt ]))
         kmod
         hexdump
       ] ++ optional  needsUbootTools ubootTools
