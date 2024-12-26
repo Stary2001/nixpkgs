@@ -148,6 +148,7 @@ let
     nativeBuildInputs = [ perl gmp libmpc mpfr bison flex ]
       ++ lib.optional (lib.versionAtLeast version "5.2") pahole
       ++ lib.optionals withRust [ rust-bindgen rustc ]
+      ++ [ (python3.pythonOnBuildForHost.withPackages (ps: [ ps.libfdt ])) ]
     ;
 
     RUST_LIB_SRC = lib.optionalString withRust rustPlatform.rustLibSrc;
