@@ -155,7 +155,7 @@ let
         mpfr
         elfutils
         zstd
-        python3Minimal
+        python3Minimal.withPackages (ps: [ ps.libfdt ]))
         kmod
         hexdump
       ] ++ optional  needsUbootTools ubootTools
