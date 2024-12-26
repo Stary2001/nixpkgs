@@ -26,7 +26,7 @@ rec {
     linux-kernel = {
       name = "powerpc";
 
-      baseConfig = "mpc83xx_defconfig";
+      #baseConfig = "mpc83xx_defconfig";
 
       autoModules = false;
       target = "zImage";
