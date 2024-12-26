@@ -321,7 +321,7 @@ let
       installTargets = [
         (kernelConf.installTarget or (
           /**/ if kernelConf.target == "uImage" && stdenv.hostPlatform.linuxArch == "arm" then "uinstall"
-          else if kernelConf.target == "zImage" || kernelConf.target == "Image.gz" || kernelConf.target == "vmlinuz.efi" then "zinstall"
+          else if (kernelConf.target == "zImage" && !stdenv.hostPlatform.isPower) || kernelConf.target == "Image.gz" || kernelConf.target == "vmlinuz.efi" then "zinstall"
           else "install"))
       ];
 
