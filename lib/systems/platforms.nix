@@ -29,10 +29,13 @@ rec {
       baseConfig = "mpc83xx_defconfig";
 
       autoModules = false;
-      target = "vmlinux";
+      target = "zImage";
 
       extraConfig = ''
         RC_CORE n
+        EROFS_FS y
+        OVERLAY_FS y
+        AUTOFS_FS y
       '';
     };
   };
