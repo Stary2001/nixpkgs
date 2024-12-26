@@ -25,18 +25,9 @@ rec {
   powerpc = {
     linux-kernel = {
       name = "powerpc";
-
       #baseConfig = "mpc83xx_defconfig";
-
       autoModules = false;
-      target = "zImage";
-
-      extraConfig = ''
-        RC_CORE n
-        EROFS_FS y
-        OVERLAY_FS y
-        AUTOFS_FS y
-      '';
+      target = "uImage";
       DTB = true;
     };
   };
