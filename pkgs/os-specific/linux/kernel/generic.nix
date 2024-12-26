@@ -1,6 +1,7 @@
 { buildPackages
 , callPackage
 , perl
+, python3
 , bison ? null
 , flex ? null
 , gmp ? null
