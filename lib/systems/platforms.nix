@@ -37,6 +37,7 @@ rec {
         OVERLAY_FS y
         AUTOFS_FS y
       '';
+      DTB = true;
     };
   };
 
