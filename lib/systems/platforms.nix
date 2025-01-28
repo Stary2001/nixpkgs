@@ -26,7 +26,7 @@ rec {
     linux-kernel = {
       name = "powerpc";
       #baseConfig = "mpc83xx_defconfig";
-      autoModules = false;
+      autoModules = true;
       target = "uImage";
       DTB = true;
     };
