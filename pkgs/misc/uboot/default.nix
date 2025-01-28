@@ -675,4 +675,17 @@ in {
     BL31 = "${armTrustedFirmwareRK3399}/bl31.elf";
     filesToInstall = [ "u-boot.itb" "idbloader.img"];
   };
+
+  ubootNwApp2 = buildUBoot {
+    version = "v2025.01-rc3";
+    src = fetchFromGitHub {
+      owner = "neuschaefer";
+      repo = "u-boot";
+      rev = "c9d8c46cf12941c834a97d17f5af84e46f1914cb";
+      hash = "sha256-lQ0A48IkKjUDvnFVygqyyH2JidARsqO4e6poXN4juvg=";
+    };
+    defconfig = "lancom_nwapp2_config";
+    extraMeta.platforms = ["powerpc-linux"];
+    filesToInstall = ["u-boot.bin"];
+  };
 }
