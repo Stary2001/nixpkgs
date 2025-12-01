@@ -4,8 +4,9 @@
   fetchFromGitHub,
   fetchzip,
   pkg-config,
-  platformio,
+  platformio-core,
   writableTmpDirAsHomeHook,
+  bluez,
   i2c-tools,
   libX11,
   libgpiod_1,
@@ -13,6 +14,16 @@
   libusb1,
   libuv,
   libxkbcommon,
+  
+  # ulfius deps
+  curl,
+  gnutls,
+  jansson,
+  libmicrohttpd,
+  orcania,
+  yder,
+  zlib,
+
   ulfius,
   yaml-cpp,
   udevCheckHook,
@@ -39,12 +50,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [
     pkg-config
-    platformio
+    platformio-core
     writableTmpDirAsHomeHook
-    breakpointHook
   ];
 
   buildInputs = [
+    bluez
     i2c-tools
     libX11
     libgpiod_1
@@ -52,6 +63,13 @@ stdenv.mkDerivation (finalAttrs: {
     libusb1
     libuv
     libxkbcommon
+    curl
+    gnutls
+    jansson
+    libmicrohttpd
+    orcania
+    yder
+    zlib
     ulfius
     yaml-cpp
   ];
@@ -61,12 +79,6 @@ stdenv.mkDerivation (finalAttrs: {
     cp -ar ${platformio-deps-native}/. platformio-deps-native
     chmod +w -R platformio-deps-native
 
-    substituteInPlace "platformio-deps-native/libdeps/native-tft/Pine libch341-spi Userspace library/libpinedio-usb.h" \
-      --replace-fail "#include <libusb-1.0/libusb.h>" "#include \"${libusb1.dev}/include/libusb-1.0/libusb.h\""
-
-    substituteInPlace "platformio-deps-native/packages/framework-portduino/cores/portduino/AsyncUDP.h" \
-      --replace-fail "#include <uv.h>" "#include \"${libuv.dev}/include/uv.h\""
-
     export PLATFORMIO_CORE_DIR=platformio-deps-native/core
     export PLATFORMIO_LIBDEPS_DIR=platformio-deps-native/libdeps
     export PLATFORMIO_PACKAGES_DIR=platformio-deps-native/packages
@@ -75,11 +87,7 @@ stdenv.mkDerivation (finalAttrs: {
   buildPhase = ''
     runHook preBuild
 
-    substituteInPlace "src/platform/portduino/PortduinoGlue.h" \
-      --replace-fail "#include \"yaml-cpp/yaml.h\""   "#include \"${yaml-cpp}/include/yaml-cpp/yaml.h\""
-
-    platformio run --environment native-tft
-
+    platformio run --environment native-tft --verbose
     runHook postBuild
   '';
 
